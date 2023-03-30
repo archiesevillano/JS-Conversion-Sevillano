@@ -16,10 +16,42 @@ const time_unit = document.getElementById("timeUnit");
 
 const d_units = ["km", "m", "cm", "mm"];
 const s_units = ["km/hr", "min/sec", "cm/sec", "mm/sec"];
-const t_units = ["h", "min", "sec"];
+const t_units = ["hr", "min", "sec"];
+
+
+//add values to selection
+d_units.forEach(unit => {
+
+    //create <option></option> and its text content, to be added to the <select>
+    const opt = document.createElement("option");
+    const optText = document.createTextNode(unit);
+    opt.appendChild(optText);
+    distance_unit.appendChild(opt);
+
+});
+
+s_units.forEach(unit => {
+
+    //create <option></option> and its text content, to be added to the <select>
+    const opt = document.createElement("option");
+    const optText = document.createTextNode(unit);
+    opt.appendChild(optText);
+    speed_unit.appendChild(opt);
+
+});
+
+t_units.forEach(unit => {
+
+    //create <option></option> and its text content, to be added to the <select>
+    const opt = document.createElement("option");
+    const optText = document.createTextNode(unit);
+    opt.appendChild(optText);
+    time_unit.appendChild(opt);
+
+});
 
 //Result Display Object
-const result = document.querySelector('.answer-container');
+const result = document.querySelector('.answer');
 
 //Input Objects
 const distanceField = document.getElementById("inputDistance");
@@ -31,38 +63,57 @@ const distanceContainer = document.querySelector(".distance");
 const speedContainer = document.querySelector(".speed");
 const timeContainer = document.querySelector(".time");
 
-
-
 hideSelected();
 
 //Adding click events to Button Objects
 
 //ResetButton
-resetBtn.addEventListener('click', () => {
-    distanceField.value = "";
-    speedField.value = "";
-    timeField.value = "";
-    console.log("Input items removed");
-})
+resetBtn.addEventListener('click', handleReset);
 
 //Calculate Button
 
 calculateBtn.addEventListener('click', () => {
+
     //calculate based on what user has selected
     if (r_distance.checked) {
-        result.innerHTML = `Result is ${calculateDistance(parseFloat(speedField.value), parseFloat(timeField.value))}`;
+        if (speed_unit.value != "Unit" && time_unit.value != "Unit") {
+            console.log("Distance");
+            result.innerHTML = `Result is ${calculateDistance(parseFloat(speedField.value), parseFloat(timeField.value)) + checkUnit("distance")}`;
+        }
+        else {
+            result.innerHTML = "Please select a Unit";
+        }
     }
     else if (r_speed.checked) {
-        result.innerHTML = `Result is ${calculateSpeed(parseFloat(distanceField.value), parseFloat(timeField.value))}`;
+        if (distance_unit.value != "Unit" && time_unit.value != "Unit") {
+            console.log("Speed");
+            result.innerHTML = `Result is ${calculateSpeed(parseFloat(distanceField.value), parseFloat(timeField.value)) + checkUnit("speed")}`;
+        }
+        else {
+            result.innerHTML = "Please select a Unit";
+        }
     }
     else if (r_time.checked) {
-        result.innerHTML = `Result is ${calculateTime(parseFloat(speedField.value), parseFloat(speedField.value))}`;
+        if (distance_unit.value != "Unit" && speed_unit.value != "Unit") {
+            result.innerHTML = `Result is ${calculateTime(parseFloat(distanceField.value), parseFloat(speedField.value)) + checkUnit("time")} `;
+        }
+        else {
+            result.innerHTML = "Please select a Unit";
+        }
     }
     else {
-        console.log("Cannot identify 'SELECTED FIND' ")
+        console.log("Cannot identify 'SELECTED FIND' ");
     }
+
 });
 
+
+function handleReset() {
+    result.innerHTML = "Reset Successfully!";
+    distanceField.value = "";
+    speedField.value = "";
+    timeField.value = "";
+}
 
 function calculateSpeed(distance, time) {
     return distance / time;
@@ -77,7 +128,7 @@ function calculateDistance(speed, time) {
 }
 
 function checkUnit(findValueUnit) {
-    let calc_unit = "???";
+    let calc_unit = "<Unsupported Unit>"; // Too many units, some are not included or not commonly use
     switch (findValueUnit) {
         case "distance":
             d_units.forEach(unit => {
@@ -97,7 +148,7 @@ function checkUnit(findValueUnit) {
             break;
 
         case "speed":
-            if (distance_unit.value == "km" && time_unit.value == "min") {
+            if (distance_unit.value == "km" && time_unit.value == "hr") {
                 calc_unit = "km/hr";
             }
             else if (distance_unit.value == "m" && time_unit.value == "min") {
@@ -136,6 +187,10 @@ function checkUnit(findValueUnit) {
 
 
 function hideSelected() {
+    handleReset(); //reset all textboxes whenever change in calculation happen
+
+
+    //hide the input field for the selected variable(e.g distance, time, speed)
     if (r_distance.checked) {
         distanceContainer.style.display = "none";
         speedContainer.style.display = "flex";
@@ -151,4 +206,5 @@ function hideSelected() {
         speedContainer.style.display = "flex";
         timeContainer.style.display = "none";
     }
+
 }

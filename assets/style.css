@@ -1,4 +1,10 @@
 /* Reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Raleway:wght@200;300;400;500&display=swap');
+/*
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Raleway', sans-serif;
+*/
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -15,7 +21,11 @@ body {
 
 :root {
     --blue: #1b55ac;
+    --blue-dark: #153c76;
+    --blue-light: #236ddc;
     --grey: #e6e6e6;
+    --grey-dark: #7f7f7f;
+    --grey-light: #c0c0c0;
 }
 
 .container {
@@ -36,12 +46,14 @@ body {
 h1 {
     text-align: center;
     padding: 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .findSelection {
-    padding: 10px;
+    padding: 10px 10px 25px;
     width: 100%;
     margin-bottom: 50px;
+    border-bottom: 1px solid silver;
 }
 
 .findSelection .wrapper {
@@ -70,25 +82,48 @@ h1 {
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .inputGroup {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .inputGroup .unitSelection {
-    width: 100px;
     padding: 0;
     margin: 0;
-    height: 36px;
+    height: 42px;
     border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    outline: none;
+    width: 150px;
+    border-color: #33333356;
+    padding-left: 10px;
+}
+
+.inputItem {
+    position: relative;
+}
+
+.inputItem label {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
 }
 
 .inputGroup input[type=number]::-webkit-outer-spin-button,
 .inputGroup input[type=number]::-webkit-inner-spin-button {
     appearance: none;
+}
+
+.fa-solid {
+    margin-right: 10px;
 }
 
 .inputGroup input[type=number] {
@@ -97,6 +132,8 @@ h1 {
     border: none;
     margin: 10px;
     border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
 }
 
 .buttonCollection {
@@ -108,6 +145,8 @@ h1 {
 }
 
 .buttonCollection button {
+    user-select: none;
+    transition: all 0.2s ease-in-out;
     padding: 10px;
     margin: 5px;
     width: 100px;
@@ -116,9 +155,43 @@ h1 {
     border: none;
     cursor: pointer;
     font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow:
+        0.8px 1.2px 1.4px rgba(0, 0, 0, 0.021),
+        1.7px 2.6px 3.1px rgba(0, 0, 0, 0.031),
+        2.9px 4.5px 5.3px rgba(0, 0, 0, 0.039),
+        4.4px 6.9px 8.2px rgba(0, 0, 0, 0.047),
+        6.5px 10.2px 12.2px rgba(0, 0, 0, 0.054),
+        9.6px 15px 17.9px rgba(0, 0, 0, 0.063),
+        14.4px 22.4px 26.8px rgba(0, 0, 0, 0.072),
+        22.9px 35.7px 42.7px rgba(0, 0, 0, 0.085),
+        43px 67px 80px rgba(0, 0, 0, 0.11);
 }
+
+.buttonCollection #calculateBtn:hover {
+    background-color: var(--blue-light);
+}
+
+.buttonCollection #calculateBtn:active {
+    background-color: var(--blue-dark);
+}
+
+.buttonCollection #resetBtn:hover {
+    background-color: var(--grey-light);
+}
+
+.buttonCollection #resetBtn:active {
+    background-color: var(--grey-dark);
+}
+
 
 .row button:nth-child(1) {
     background-color: var(--blue);
     color: rgb(241, 232, 232);
+}
+
+.answer-container {
+    font-family: 'Poppins', sans-serif;
+    color: var(--blue);
+    font-weight: bold;
 }

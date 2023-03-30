@@ -18,19 +18,29 @@
         <h1>Calculate DST</h1>
 
         <div class="findSelection">
-            <p>Choose what to calculate: </p>
+            <p style="font-family: 'Poppins', sans-serif;font-size:14px;text-align:center;">Choose what to calculate:
+            </p>
             <div class="wrapper">
                 <div class="row">
                     <input type="radio" name="dst" id="findDistance" onChange="hideSelected()" checked>
-                    <label for="findDistance">Distance</label>
+                    <label for="findDistance">
+                        <i class="fa-solid fa-left-right"></i>
+                        Distance
+                    </label>
                 </div>
                 <div class="row">
                     <input type="radio" name="dst" id="findTime" onChange="hideSelected()">
-                    <label for="findTime">Time</label>
+                    <label for="findTime">
+                        <i class="fa-solid fa-clock"></i>
+                        Time
+                    </label>
                 </div>
                 <div class="row">
                     <input type="radio" name="dst" id="findSpeed" onChange="hideSelected()">
-                    <label for="findSpeed">Speed</label>
+                    <label for="findSpeed">
+                        <i class="fa-solid fa-person-running"></i>
+                        Speed
+                    </label>
                 </div>
             </div>
         </div>
@@ -43,10 +53,6 @@
             </div>
             <select class="unitSelection" id="distanceUnit">
                 <option selected disabled>Unit</option>
-                <option>km</option>
-                <option>m</option>
-                <option>cm</option>
-                <option>mm</option>
             </select>
         </div>
 
@@ -58,13 +64,8 @@
             </div>
             <select class="unitSelection" id="speedUnit">
                 <option selected disabled>Unit</option>
-                <option>km/h</option>
-                <option>min/sec</option>
-                <option>cm/sec</option>
-                <option>mm/sec</option>
             </select>
         </div>
-
 
         <!-- Time Input -->
         <div class="inputGroup time">
@@ -74,9 +75,6 @@
             </div>
             <select class="unitSelection" id="timeUnit">
                 <option selected disabled>Unit</option>
-                <option>h</option>
-                <option>min</option>
-                <option>sec</option>
             </select>
         </div>
 
@@ -91,7 +89,10 @@
         </div>
 
         <!-- Answer Output -->
-        <p class="answer-container"></p>
+        <p class="answer-container">
+            <i class="fa-solid fa-bars-staggered"></i>
+            <span class="answer">Result here...</span>
+        </p>
     </div>
 
 
