@@ -1,0 +1,124 @@
+/* Reset */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+    --blue: #1b55ac;
+    --grey: #e6e6e6;
+}
+
+.container {
+    padding: 20px;
+    background: #ece8e8;
+    width: 600px;
+    height: 500px;
+    border-radius: 10px;
+    box-shadow:
+        1.2px 1.9px 2.2px rgba(0, 0, 0, 0.031),
+        2.9px 4.5px 5.3px rgba(0, 0, 0, 0.044),
+        5.4px 8.4px 10px rgba(0, 0, 0, 0.055),
+        9.6px 15px 17.9px rgba(0, 0, 0, 0.066),
+        18px 28px 33.4px rgba(0, 0, 0, 0.079),
+        43px 67px 80px rgba(0, 0, 0, 0.11);
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+}
+
+.findSelection {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.findSelection .wrapper {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.findSelection input[type=radio] {
+    display: none;
+}
+
+.findSelection input[type=radio]:checked~label {
+    background-color: var(--blue);
+    color: rgb(240, 230, 230);
+}
+
+.findSelection label {
+    border: 1px solid silver;
+    display: inline-block;
+    padding: 10px;
+    text-transform: uppercase;
+    width: 150px;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.inputGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputGroup .unitSelection {
+    width: 100px;
+    padding: 0;
+    margin: 0;
+    height: 36px;
+    border-radius: 5px;
+}
+
+.inputGroup input[type=number]::-webkit-outer-spin-button,
+.inputGroup input[type=number]::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+.inputGroup input[type=number] {
+    padding: 10px;
+    outline: none;
+    border: none;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.buttonCollection {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.buttonCollection button {
+    padding: 10px;
+    margin: 5px;
+    width: 100px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.row button:nth-child(1) {
+    background-color: var(--blue);
+    color: rgb(241, 232, 232);
+}

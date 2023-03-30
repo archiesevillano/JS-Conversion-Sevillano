@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+
+<body>
+    <!-- Page Contents -->
+
+    <div class="container">
+
+        <!-- Title -->
+        <h1>Calculate DST</h1>
+
+        <div class="findSelection">
+            <p>Choose what to calculate: </p>
+            <div class="wrapper">
+                <div class="row">
+                    <input type="radio" name="dst" id="findDistance" onChange="hideSelected()" checked>
+                    <label for="findDistance">Distance</label>
+                </div>
+                <div class="row">
+                    <input type="radio" name="dst" id="findTime" onChange="hideSelected()">
+                    <label for="findTime">Time</label>
+                </div>
+                <div class="row">
+                    <input type="radio" name="dst" id="findSpeed" onChange="hideSelected()">
+                    <label for="findSpeed">Speed</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Distance Input -->
+        <div class="inputGroup distance">
+            <div class="inputItem">
+                <label for="inputDistance">Distance</label>
+                <input type="number" id="inputDistance" placeholder="0">
+            </div>
+            <select class="unitSelection" id="distanceUnit">
+                <option selected disabled>Unit</option>
+                <option>km</option>
+                <option>m</option>
+                <option>cm</option>
+                <option>mm</option>
+            </select>
+        </div>
+
+        <!-- Speed Input -->
+        <div class="inputGroup speed">
+            <div class="inputItem">
+                <label for="inputSpeed">Speed</label>
+                <input type="number" id="inputSpeed" placeholder="0">
+            </div>
+            <select class="unitSelection" id="speedUnit">
+                <option selected disabled>Unit</option>
+                <option>km/h</option>
+                <option>min/sec</option>
+                <option>cm/sec</option>
+                <option>mm/sec</option>
+            </select>
+        </div>
+
+
+        <!-- Time Input -->
+        <div class="inputGroup time">
+            <div class="inputItem">
+                <label for="inputTime">Time</label>
+                <input type="number" id="inputTime" placeholder="0">
+            </div>
+            <select class="unitSelection" id="timeUnit">
+                <option selected disabled>Unit</option>
+                <option>h</option>
+                <option>min</option>
+                <option>sec</option>
+            </select>
+        </div>
+
+        <!-- Button Groups -->
+        <div class="row buttonCollection">
+            <button type="button" id="calculateBtn">
+                Calculate
+            </button>
+            <button type="button" id="resetBtn">
+                Reset
+            </button>
+        </div>
+
+        <!-- Answer Output -->
+        <p class="answer-container"></p>
+    </div>
+
+
+
+    <!-- Scripts here -->
+    <script type="text/javascript" src="assets/script.js"></script>
+    <script src="https://kit.fontawesome.com/bbbef04b10.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
