@@ -78,7 +78,7 @@ calculateBtn.addEventListener('click', () => {
     if (r_distance.checked) {
         if (speed_unit.value != "Unit" && time_unit.value != "Unit") {
             console.log("Distance");
-            result.innerHTML = `Result is ${calculateDistance(parseFloat(speedField.value), parseFloat(timeField.value)) + checkUnit("distance")}`;
+            result.innerHTML = calculateDistance(parseFloat(speedField.value), parseFloat(timeField.value)) + checkUnit("distance");
         }
         else {
             result.innerHTML = "Please select a Unit";
@@ -87,7 +87,7 @@ calculateBtn.addEventListener('click', () => {
     else if (r_speed.checked) {
         if (distance_unit.value != "Unit" && time_unit.value != "Unit") {
             console.log("Speed");
-            result.innerHTML = `Result is ${calculateSpeed(parseFloat(distanceField.value), parseFloat(timeField.value)) + checkUnit("speed")}`;
+            result.innerHTML = calculateSpeed(parseFloat(distanceField.value), parseFloat(timeField.value)) + checkUnit("speed");
         }
         else {
             result.innerHTML = "Please select a Unit";
@@ -95,7 +95,7 @@ calculateBtn.addEventListener('click', () => {
     }
     else if (r_time.checked) {
         if (distance_unit.value != "Unit" && speed_unit.value != "Unit") {
-            result.innerHTML = `Result is ${calculateTime(parseFloat(distanceField.value), parseFloat(speedField.value)) + checkUnit("time")} `;
+            result.innerHTML = calculateTime(parseFloat(distanceField.value), parseFloat(speedField.value)) + checkUnit("time");
         }
         else {
             result.innerHTML = "Please select a Unit";
@@ -106,7 +106,6 @@ calculateBtn.addEventListener('click', () => {
     }
 
 });
-
 
 function handleReset() {
     result.innerHTML = "Reset Successfully!";
@@ -131,54 +130,38 @@ function checkUnit(findValueUnit) {
     let calc_unit = "<Unsupported Unit>"; // Too many units, some are not included or not commonly use
     switch (findValueUnit) {
         case "distance":
-            d_units.forEach(unit => {
-                if (speed_unit.value == "km/hr") {
-                    calc_unit = "km";
-                }
-                else if (speed_unit.value == "min/sec") {
-                    calc_unit = "m"
-                }
-                else if (speed_unit.value == "cm/sec") {
-                    calc_unit = "cm"
-                }
-                else if (speed_unit.value == "mm/sec") {
-                    calc_unit = "mm"
-                }
-            });
+            if (speed_unit.value == "km/hr") {
+                calc_unit = "km";
+            }
+            else if (speed_unit.value == "min/sec") {
+                calc_unit = "m"
+            }
+            else if (speed_unit.value == "cm/sec") {
+                calc_unit = "cm"
+            }
+            else if (speed_unit.value == "mm/sec") {
+                calc_unit = "mm"
+            }
             break;
 
         case "speed":
-            if (distance_unit.value == "km" && time_unit.value == "hr") {
-                calc_unit = "km/hr";
-            }
-            else if (distance_unit.value == "m" && time_unit.value == "min") {
-                calc_unit = "min/sec"
-            }
-            else if (distance_unit.value == "cm" && time_unit.value == "sec") {
-                calc_unit = "cm/sec"
-            }
-            else if (distance_unit.value == "mm" && time_unit.value == "sec") {
-                calc_unit = "mm/sec"
-            }
+            calc_unit = distance_unit.value.concat("/", time_unit.value);
             break;
 
         case "time":
-            s_units.forEach(unit => {
-                if (unit == "km/hr") {
-                    calc_unit = "hr"
-                }
-                else if (unit == "min/sec") {
-                    calc_unit = "min";
-                }
-                else if (unit == "cm/sec") {
-                    calc_unit = "sec"
-                }
-                else if (unit == "mm/sec") {
-                    calc_unit = "sec"
-                }
-            });
+            if (speed_unit.value == "km/hr") {
+                calc_unit = "hr"
+            }
+            else if (speed_unit.value == "min/sec") {
+                calc_unit = "min";
+            }
+            else if (speed_unit.value == "cm/sec") {
+                calc_unit = "sec"
+            }
+            else if (speed_unit.value == "mm/sec") {
+                calc_unit = "sec"
+            }
             break;
-
         default:
             console.log("Unable to identify unit");
     }
